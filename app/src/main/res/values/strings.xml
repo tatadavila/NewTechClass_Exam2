@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NewTech_Exam2</string>
+
+    <string-array name="sNumbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    
+    <string-array name="eduLevels">
+        <item>Bachillerato</item>
+        <item>Pregrado</item>
+        <item>Maestría</item>
+        <item>Doctorado</item>
+    </string-array>
+</resources>
