@@ -4,14 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class RegistersDb extends SQLiteOpenHelper {
 
     private static final int BD_VERSION = 1;
 
     public RegistersDb(Context context) {
-        super(context, DbDef.BD_NAME, null, 1);
+        super(context, DbDef.BD_NAME, null, BD_VERSION);
     }
 
     @Override

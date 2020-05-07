@@ -20,9 +20,9 @@ public class UserController {
 
             values.put(DbDef.ID_COL, u.id);
             values.put(DbDef.NAME_COL, u.name);
-            values.put(DbDef.ADDRESS_COL, u.stratum);
-            values.put(DbDef.ATTENT_PLACE_COL, u.wage);
-            values.put(DbDef.DATE_COL, u.educationLevel);
+            values.put(DbDef.STRATUM_COL, u.stratum);
+            values.put(DbDef.WAGE_COL, u.wage);
+            values.put(DbDef.EDUCATION_LEVEL_COL, u.educationLevel);
 
             database.insert(DbDef.TABLE_NAME, null, values);
 
@@ -54,9 +54,9 @@ public class UserController {
 
             values.put(DbDef.ID_COL, u.id);
             values.put(DbDef.NAME_COL, u.name);
-            values.put(DbDef.ADDRESS_COL, u.stratum);
-            values.put(DbDef.ATTENT_PLACE_COL, u.wage);
-            values.put(DbDef.DATE_COL, u.educationLevel);
+            values.put(DbDef.STRATUM_COL, u.stratum);
+            values.put(DbDef.WAGE_COL, u.wage);
+            values.put(DbDef.EDUCATION_LEVEL_COL, u.educationLevel);
 
             database.update(DbDef.TABLE_NAME, values, "ID=?", args);
             database.close();
@@ -80,7 +80,7 @@ public class UserController {
     public Cursor allUsers() {
         try {
             SQLiteDatabase database = db.getWritableDatabase();
-            Cursor c = database.rawQuery("select ID as _id , NAME, ADDRESS, ATTENTION_PLACE, POSITIVE_TEST_DATE from TESTS", null);
+            Cursor c = database.rawQuery("select ID as _id , NAME, STRATUM, WAGE, EDUCATION_LEVEL from USERS", null);
             return c;
         } catch (final Exception e) {
             System.out.println("Query Error");

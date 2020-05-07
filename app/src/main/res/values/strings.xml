@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewTech_Exam2</string>
+    <string name="app_name">Parcial#2</string>
 
     <string-array name="sNumbers">
         <item>1</item>
@@ -9,7 +9,7 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    
+
     <string-array name="eduLevels">
         <item>Bachillerato</item>
         <item>Pregrado</item>
