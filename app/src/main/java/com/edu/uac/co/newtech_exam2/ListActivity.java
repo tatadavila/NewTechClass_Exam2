@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,9 +21,13 @@ public class ListActivity extends AppCompatActivity implements UserListener {
     private UserController uC;
     private RecyclerView uList;
     private UserAdapter uA;
-    private List<User> userList = new ArrayList <User>();
+
+        List<User> userList = new ArrayList <User>();
 
     private User selectedUser = null;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,7 @@ public class ListActivity extends AppCompatActivity implements UserListener {
         }
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -66,24 +72,42 @@ public class ListActivity extends AppCompatActivity implements UserListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_list_toolbar, menu);
 
+        MenuItem menuItem = menu.findItem(R.id.searchIcon);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                uA.getFilter().filter(newText);
+
+                return false;
+            }
+        });
+
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.edit:
                 Toast.makeText(this, "Editar Usuario "+ selectedUser.name, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(this, ModifyUserActivity.class);
-                intent.putExtra("usertkey", selectedUser);
+                intent.putExtra("userkey", selectedUser);
 
                 startActivity(intent);
 
                 return true;
 
             case R.id.delete:
-                Toast.makeText(this, "Paciente Eliminado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Usuario Eliminado", Toast.LENGTH_SHORT).show();
 
                 uC.deleteUser(selectedUser);
                 uA.deleteUser(selectedUser);
